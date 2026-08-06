@@ -1,0 +1,15 @@
+Model,Prompt ID,Prompt Type,Response Time (s),Tokens/sec,Peak GPU Memory (MiB),GPU Memory Increase (MiB),Output Length (tokens),Output Length (words),Notes
+llama3.2:3b,P1,Summarization,5.197,165.05,3371,2661,92,52,Accurate summary; used bullets.
+llama3.2:3b,P2,Classification,4.921,164.81,3371,2661,51,36,All five labels correct.
+llama3.2:3b,P3,Structured output,5.053,165,3375,2665,65,25,Valid JSON and exact schema.
+llama3.2:3b,P4,Domain-specific,5.729,140.14,3373,2663,160,137,Mischaracterized mobile pedestals.
+llama3.2:3b,P5,Hallucination-sensitive,5.348,154.17,3373,2663,110,89,Invented a certification claim.
+llama3.2:3b,P6,Reasoning,7.093,140.78,3375,2665,350,189,Multiple arithmetic errors; output truncated.
+llama3.2:3b,P7,Tone/persona,5.637,140.06,3371,2661,141,124,Professional; did not directly address damaged cartons.
+qwen3:4b-instruct,P1,Summarization,5.171,127.83,3967,3257,78,36,Complete 36-word summary.
+qwen3:4b-instruct,P2,Classification,5.008,124.05,3971,3261,57,32,All five labels correct.
+qwen3:4b-instruct,P3,Structured output,5.225,125.26,3969,3259,80,27,Valid JSON and exact schema.
+qwen3:4b-instruct,P4,Domain-specific,5.92,112.39,3967,3257,150,122,Correct terminology and caveat.
+qwen3:4b-instruct,P5,Hallucination-sensitive,5.419,116.29,3967,3257,100,74,Properly refused unsupported claims.
+qwen3:4b-instruct,P6,Reasoning,7.773,109.7,3971,3261,350,162,"Correct subtotal, tax, and final total; ending truncated."
+qwen3:4b-instruct,P7,Tone/persona,5.849,112.85,3971,3261,145,121,Added an unsupported reason and update deadline.
