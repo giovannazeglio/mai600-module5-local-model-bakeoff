@@ -1,5 +1,15 @@
-.ipynb_checkpoints/
-__pycache__/
-benchmark_outputs/
-*.pyc
-
+Model,Prompt ID,Accuracy,Helpfulness,Format,Completeness,Grounding,Clarity,Speed,Overall Average,Overall Notes
+Llama 3.2 3B,P1,5,5,4,5,5,5,5,4.86,Accurate and concise; used a bullet list rather than a conventional paragraph.
+Llama 3.2 3B,P2,5,5,5,5,5,5,5,5,All five classifications were correct and the requested table format was followed.
+Llama 3.2 3B,P3,5,5,5,5,5,5,5,5,Valid JSON with the exact requested keys and values.
+Llama 3.2 3B,P4,3,4,5,4,5,4,5,4.29,Incorrectly described mobile pedestals as equipment supports instead of storage units.
+Llama 3.2 3B,P5,1,2,4,3,1,2,5,2.57,"Unsupportedly confirmed a certification, then contradicted the claim."
+Llama 3.2 3B,P6,1,1,3,2,2,2,4,2.14,Multiple arithmetic errors and an incorrect over-budget conclusion; output truncated.
+Llama 3.2 3B,P7,4,4,5,4,4,5,5,4.43,"Professional and within the limit, but weak on damaged cartons and made a broad assurance."
+Qwen3 4B Instruct,P1,5,5,5,5,5,5,5,5,Complete and accurate 36-word summary.
+Qwen3 4B Instruct,P2,5,5,5,5,5,5,5,5,All five classifications were correct in the requested two-column table.
+Qwen3 4B Instruct,P3,5,5,5,5,5,5,5,5,Valid JSON with the exact schema and correct values.
+Qwen3 4B Instruct,P4,5,5,5,5,5,5,5,5,"Correct terminology, length, measurement caveat, and no code-compliance claim."
+Qwen3 4B Instruct,P5,5,5,5,5,5,5,5,5,Separated known and unknown information and refused to invent specifications.
+Qwen3 4B Instruct,P6,5,4,4,3,5,5,4,4.29,"Correct subtotal, tax, and final total; token limit cut off the remaining-budget line."
+Qwen3 4B Instruct,P7,3,4,4,5,2,5,5,4,Invented a logistical reason and promised an unconfirmed update deadline.

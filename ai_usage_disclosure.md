@@ -1,62 +1,68 @@
-# Sample Output Review
+# AI Tool Usage Disclosure
 
-This file records the most important observed behavior from the executed notebook. The notebook contains the complete locally executed benchmark and the numeric output lengths for all 14 responses.
+## AI tools used
 
-## P1 — Summarization
+- [x] ChatGPT
+- [ ] Claude
+- [ ] Gemini
+- [ ] Claude Code
+- [ ] GitHub Copilot
+- [x] OpenAI Codex
+- [ ] Other: None
 
-- **Llama 3.2 3B:** Accurate 52-word summary containing the project size, all requested furniture, priorities, budget, and date. It used bullets rather than a conventional paragraph.
-- **Qwen3 4B Instruct:** Accurate 36-word summary containing every required fact and no added information.
+## Local tools used
 
-## P2 — Classification
+- [x] Ollama
+- [ ] LM Studio
+- [ ] llama.cpp
+- [ ] AU lab environment
+- [x] Other: Jupyter Notebook, Python, `requests`, `pandas`, `matplotlib`, and `nvidia-smi`
 
-Both models produced the same correct mapping:
+## API usage
 
-| Inquiry ID | Correct label |
-|---|---|
-| I1 | SPACE_PLANNING |
-| I2 | PRODUCT_QUESTION |
-| I3 | DELIVERY_ISSUE |
-| I4 | PRICE_REQUEST |
-| I5 | WARRANTY_REQUEST |
+- [x] No hosted API used for the benchmark
+- [ ] Hosted API used for comparison: Not applicable
 
-## P3 — Structured JSON
+The notebook called Ollama’s local API at `http://localhost:11434/api/generate`. This endpoint ran on the same Windows computer and was not a hosted model API.
 
-Both models returned valid JSON with the exact seven keys and correct values. Neither added commentary outside the JSON object.
+## How I used AI
 
-## P4 — Domain-specific language
+- I used ChatGPT and OpenAI Codex as learning and support tools to interpret the assignment, organize the notebook and repository, draft fictional non-sensitive test prompts, and create Python benchmark code.
+- AI assisted with summarizing the measured results, identifying trade-offs, and drafting repository documentation.
+- The local models generated the responses evaluated in the experiment.
 
-- **Llama 3.2 3B:** Met the length, format, and caveat requirements, but incorrectly treated mobile pedestals as supports for laptops or monitors rather than mobile storage units.
-- **Qwen3 4B Instruct:** Correctly described benching workstations, storage pedestals, acoustic screens, task chairs, and circulation. It included the measured-floor-plan caveat and avoided claiming code compliance.
+## Prompts used
 
-## P5 — Hallucination-sensitive
+- Summarize fictional Northstar Creative Studio project notes in 80 words or fewer.
+- Classify five fictional customer inquiries using five allowed labels.
+- Convert a fictional office-refresh description into an exact JSON schema.
+- Explain five commercial office-furniture concepts in one professional paragraph.
+- Respond safely when fictional chair warranty, certification, and capacity claims cannot be verified.
+- Calculate a fictional furniture subtotal, tax, installation cost, final total, and remaining budget.
+- Rewrite a fictional delivery complaint in an empathetic professional tone without unsupported promises.
 
-- **Llama 3.2 3B:** Incorrectly confirmed GREENGUARD Gold certification despite the prompt stating that no verified specifications were available. It then contradicted that claim by acknowledging the lack of reliable information.
-- **Qwen3 4B Instruct:** Clearly stated that the warranty, certification, and weight capacity could not be verified and recommended obtaining an official manufacturer product sheet or written confirmation.
+The complete prompt wording is preserved in [`prompt_set.md`](prompt_set.md).
 
-## P6 — Reasoning
+## What I verified myself
 
-Verified reference calculation:
+- I installed Ollama and confirmed the installed version.
+- I checked my Windows operating system, CPU, RAM, GPU, VRAM, NVIDIA driver, and CUDA information.
+- I downloaded both local models and confirmed their local file sizes.
+- I ran all 14 tests on my own computer.
+- I reviewed the outputs against the prompt facts and instructions.
+- I verified the benchmark numbers and the expected arithmetic result for P6.
+- I assigned the 1–5 quality scores and selected the final model based on the measured evidence.
 
-| Step | Calculation | Correct amount |
-|---|---|---:|
-| Desks | 18 × $680 | $12,240.00 |
-| Chairs | 18 × $295 | $5,310.00 |
-| Pedestals | 18 × $210 | $3,780.00 |
-| Furniture subtotal | Sum of furniture | $21,330.00 |
-| Sales tax | 7% × $21,330 | $1,493.10 |
-| Installation | Untaxed | $950.00 |
-| Final total | Subtotal + tax + installation | $23,773.10 |
-| Remaining budget | $25,000 − $23,773.10 | $1,226.90 |
+## Failures and limitations
 
-- **Llama 3.2 3B:** Miscalculated chair cost, subtotal, tax, final total, and budget status, and reached the output limit.
-- **Qwen3 4B Instruct:** Correctly calculated the furniture subtotal, tax, and final total. The 350-token limit stopped the response before it stated the remaining budget.
+- One Ollama command initially failed because multiple commands were pasted together; the model downloaded correctly after the command was re-entered by itself.
+- Each prompt/model combination was run once, so the experiment does not measure run-to-run variation or statistical significance.
+- `keep_alive: 0s` unloaded the model after each request, so the response-time values include model-loading overhead.
+- Peak GPU memory is the total memory observed through `nvidia-smi`, not a perfectly isolated model allocation.
+- The 350-token limit truncated both P6 responses; Qwen had already produced the correct subtotal, tax, and final total, but did not reach the remaining-budget line.
+- The exact quantization of the default Llama Ollama package was not separately verified.
+- This comparison does not prove that Qwen will be better for every prompt, hardware configuration, runtime version, or professional use case.
+- Both models produced at least one output that required correction, so human review remains necessary.
 
-## P7 — Tone/persona
-
-- **Llama 3.2 3B:** Professional, empathetic, and within the word limit. It did not directly address the damaged cartons and made a broad assurance about preventing recurrence.
-- **Qwen3 4B Instruct:** Clear, empathetic, and within the word limit. It nevertheless invented a logistical reason for the split shipment and promised a next-day update not supported by the prompt.
-
-## Overall interpretation
-
-Qwen produced the safer and more dependable outputs overall, especially on domain terminology, unsupported specifications, and arithmetic. The P7 failure shows that the higher-scoring model still requires human review.
+I confirm that AI was used as a learning and support tool, not as a replacement for my own work.
 
